@@ -11,11 +11,11 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f1f5f9;
         }
 
         .sidebar-bg {
-            background-color: #003057; /* Deep blue from logo */
+            background-color: #003057;
         }
 
         .header-bg {
@@ -23,233 +23,253 @@
         }
 
         .active-nav {
-            background-color: #2e7d32; /* Green from buttons */
+            background-color: #38a169; /* Balanced Green */
         }
 
-        .custom-shadow {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        /* Fixed Detail row alignment */
+        .detail-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: start;
         }
 
-        /* Hide scrollbar but keep functionality */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        /* Consistent Aspect ratio for both profile images */
+        .profile-box {
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            width: 100%;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+
+        /* Mobile sidebar handling */
+        @media (max-width: 1024px) {
+            .sidebar-collapsed {
+                display: none;
+            }
         }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="sidebar-bg w-64 flex-shrink-0 flex flex-col text-white">
-        <div class="p-6 flex flex-col items-center border-b border-blue-900/50">
-            <!-- Mock Logo -->
+    <aside class="sidebar-bg w-64 flex-shrink-0 flex flex-col text-white sidebar-collapsed lg:flex">
+        <div class="p-6 flex flex-col items-center border-b border-blue-900/30">
             <div class="mb-2 text-center">
-                <i class="fas fa-university text-3xl mb-1"></i>
-                <h1 class="text-sm font-bold tracking-widest leading-tight">COLLEGE<br>POSSIBLE</h1>
+                <i class="fas fa-university text-3xl mb-1 text-blue-200"></i>
+                <h1 class="text-xs font-bold tracking-widest leading-tight uppercase">College<br>Possible</h1>
             </div>
         </div>
 
-        <nav class="flex-1 overflow-y-auto no-scrollbar py-4">
+        <nav class="flex-1 overflow-y-auto py-4">
             <ul class="space-y-1">
                 <li>
-                    <a href="#" class="active-nav flex items-center justify-between px-6 py-3 text-sm font-medium transition-colors">
+                    <a href="#" class="active-nav flex items-center justify-between px-6 py-3 text-sm font-medium">
                         <span class="flex items-center"><i class="fas fa-th-large w-5 mr-3"></i> Home</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-question-circle w-5 mr-3"></i> My Questions</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 transition-all group">
+                        <span class="flex items-center"><i class="fas fa-question-circle w-5 mr-3 group-hover:text-blue-300"></i> My Questions</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-graduation-cap w-5 mr-3"></i> Milestones</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 group">
+                        <span class="flex items-center"><i class="fas fa-graduation-cap w-5 mr-3 group-hover:text-blue-300"></i> Milestones</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-book w-5 mr-3"></i> Knowledge Hub</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 group">
+                        <span class="flex items-center"><i class="fas fa-book w-5 mr-3 group-hover:text-blue-300"></i> Knowledge Hub</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-comment-dots w-5 mr-3"></i> Messages History</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 group">
+                        <span class="flex items-center"><i class="fas fa-comment-dots w-5 mr-3 group-hover:text-blue-300"></i> Messages History</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-play-circle w-5 mr-3"></i> Courses</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 group">
+                        <span class="flex items-center"><i class="fas fa-play-circle w-5 mr-3 group-hover:text-blue-300"></i> Courses</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-search w-5 mr-3"></i> Find Colleges</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 group">
+                        <span class="flex items-center"><i class="fas fa-search w-5 mr-3 group-hover:text-blue-300"></i> Find Colleges</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                        <span class="flex items-center"><i class="fas fa-globe w-5 mr-3"></i> Common App</span>
-                        <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                    <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 group">
+                        <span class="flex items-center"><i class="fas fa-globe w-5 mr-3 group-hover:text-blue-300"></i> Common App</span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
                     </a>
                 </li>
             </ul>
         </nav>
 
-        <div class="p-4 border-t border-blue-900/50">
-            <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors rounded">
+        <div class="p-4 border-t border-blue-900/30">
+            <a href="#" class="flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-white/5 rounded">
                 <span class="flex items-center"><i class="fas fa-sign-out-alt w-5 mr-3"></i> Logout</span>
-                <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
             </a>
         </div>
     </aside>
 
-    <!-- Main Area -->
+    <!-- Main Content -->
     <main class="flex-1 flex flex-col overflow-hidden">
         
-        <!-- Top Header -->
-        <header class="header-bg text-white h-16 flex items-center justify-between px-8 mx-4 mt-4 rounded-xl shadow-lg">
-            <div class="flex items-center font-medium">
-                <i class="fas fa-th mr-2"></i> Home
+        <!-- Header -->
+        <header class="header-bg text-white h-16 flex items-center justify-between px-4 lg:px-8 lg:mx-4 mt-0 lg:mt-4 lg:rounded-xl shadow-md flex-shrink-0">
+            <div class="flex items-center font-medium text-sm lg:text-base">
+                <i class="fas fa-th mr-2 hidden sm:block"></i> Home
             </div>
             
-            <div class="flex items-center space-x-6">
-                <!-- Dynamic Date -->
-                <div class="bg-white/10 border border-white/20 rounded-lg px-4 py-1.5 text-sm flex items-center">
+            <div class="flex items-center space-x-3 lg:space-x-6">
+                <!-- Date -->
+                <div class="hidden sm:flex bg-white/10 border border-white/20 rounded-lg px-3 lg:px-4 py-1.5 text-xs lg:text-sm items-center">
                     <i class="far fa-calendar-alt mr-2"></i>
                     <span id="currentDate">Tuesday, March 24, 2026</span>
                 </div>
                 
-                <!-- Notification -->
-                <button class="relative hover:text-blue-200 transition-colors">
-                    <i class="far fa-bell text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-blue-500 w-2 h-2 rounded-full border-2 border-[#003057]"></span>
+                <button class="relative hover:text-blue-200">
+                    <i class="far fa-bell text-lg lg:text-xl"></i>
+                    <span class="absolute top-0 right-0 bg-blue-500 w-2 h-2 rounded-full border border-[#003057]"></span>
                 </button>
                 
-                <!-- User Profile -->
-                <div class="flex items-center bg-white/10 hover:bg-white/20 cursor-pointer p-1 pr-3 rounded-lg transition-all">
-                    <div class="w-8 h-8 bg-gray-300 rounded-lg flex items-center justify-center text-[#003057] mr-3 overflow-hidden">
-                        <i class="fas fa-user"></i>
+                <div class="flex items-center bg-white/10 p-1 pr-2 lg:pr-3 rounded-lg cursor-pointer hover:bg-white/20 transition-all">
+                    <div class="w-7 h-7 lg:w-9 lg:h-9 bg-gray-300 rounded flex items-center justify-center text-[#003057] mr-2 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" class="w-full h-full object-cover">
                     </div>
-                    <div class="text-xs">
-                        <div class="font-bold flex items-center">Dave Ela <i class="fas fa-chevron-down ml-2 scale-75"></i></div>
-                        <div class="opacity-70">fizzah+012@plumlogix.com</div>
+                    <div class="text-[10px] lg:text-xs">
+                        <div class="font-bold flex items-center">Dave Ela <i class="fas fa-chevron-down ml-1 scale-75"></i></div>
+                        <div class="opacity-60 hidden md:block">fizzah+012@plumlogix.com</div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Page Content -->
-        <div class="flex-1 overflow-y-auto p-8 pt-6">
+        <!-- Scrolling Content -->
+        <div class="flex-1 overflow-y-auto p-4 lg:p-8">
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 mb-8">
                 
                 <!-- Personal Details Card -->
-                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm flex flex-col">
-                    <h2 class="text-xl font-bold mb-6 text-gray-800">Personal Details</h2>
+                <div class="bg-white rounded-2xl p-5 lg:p-8 shadow-sm border border-gray-100 flex flex-col">
+                    <h2 class="text-lg lg:text-xl font-bold mb-6 text-gray-800 flex items-center">
+                        <span class="w-1.5 h-6 bg-blue-900 rounded-full mr-3"></span>
+                        Personal Details
+                    </h2>
                     
-                    <div class="flex flex-col md:flex-row flex-1">
-                        <!-- Text Info -->
-                        <div class="flex-1 space-y-3 pr-4">
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm">Name</span>
-                                <span class="font-semibold text-blue-800 text-sm">Dave Ela</span>
+                    <div class="flex flex-col md:flex-row gap-6 lg:gap-8 flex-1">
+                        <!-- Left: Info -->
+                        <div class="flex-1">
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Name</span>
+                                <span class="font-semibold text-blue-900 text-sm">Dave Ela</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm">Preferred Name</span>
-                                <span class="font-semibold text-blue-800 text-sm">Mr.</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Preferred Name</span>
+                                <span class="font-semibold text-blue-900 text-sm">Mr.</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm">Email</span>
-                                <span class="font-semibold text-blue-800 text-sm">fizzah+012@plumlogix.com</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Email</span>
+                                <span class="font-semibold text-blue-900 text-sm break-all">fizzah+012@plumlogix.com</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm">Home Phone</span>
-                                <span class="font-semibold text-blue-800 text-sm">—</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Home Phone</span>
+                                <span class="font-semibold text-blue-900 text-sm text-gray-300">—</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm">Mobile</span>
-                                <span class="font-semibold text-blue-800 text-sm">1234567890</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Mobile</span>
+                                <span class="font-semibold text-blue-900 text-sm">1234567890</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm">DSA ID</span>
-                                <span class="font-semibold text-blue-800 text-sm">32333</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">DSA ID</span>
+                                <span class="font-semibold text-blue-900 text-sm">32333</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-32 text-gray-400 text-sm shrink-0">Mailing Address</span>
-                                <span class="font-semibold text-blue-800 text-sm leading-snug">3003 Washington Boulevard Ste 1000<br>Arlington, VA 22201 United States</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Mailing Address</span>
+                                <span class="font-semibold text-blue-900 text-sm leading-relaxed">
+                                    3003 Washington Boulevard Ste 1000<br>
+                                    Arlington, VA 22201 United States
+                                </span>
                             </div>
                         </div>
                         
-                        <!-- Avatar Section -->
-                        <div class="mt-6 md:mt-0 md:w-48 flex flex-col items-center">
-                            <div class="w-40 h-48 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 mb-4 overflow-hidden border-2 border-dashed border-gray-300">
-                                <i class="fas fa-user-circle text-7xl opacity-50"></i>
+                        <!-- Right: Photo/Buttons -->
+                        <div class="w-full md:w-44 flex flex-col items-center">
+                            <!-- Student Profile Picture -->
+                            <div class="w-36 lg:w-40 profile-box bg-slate-100 rounded-xl overflow-hidden shadow-sm mb-4">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Student" class="w-full h-full object-cover">
                             </div>
-                            <button class="w-full bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2.5 rounded-lg transition-colors">
+                            <button class="w-full bg-[#2e7d32] hover:bg-[#25632a] text-white text-xs font-bold py-2.5 rounded-lg transition-all shadow-sm">
                                 Edit Details
                             </button>
                         </div>
                     </div>
                     
-                    <div class="mt-4 pt-4 border-t border-gray-50">
-                        <div class="flex items-start">
-                            <span class="w-32 text-gray-400 text-xs leading-tight">Academic Release Form Link</span>
-                            <button class="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-lg text-xs font-bold transition-colors">
-                                Academic Release Form
-                            </button>
-                        </div>
+                    <div class="mt-6 pt-6 border-t border-gray-50 flex flex-col sm:flex-row items-center gap-4">
+                        <span class="text-gray-400 text-[11px] lg:text-xs text-center sm:text-left leading-tight">Academic Release Form Link</span>
+                        <button class="bg-[#1b5e20] hover:bg-[#144317] text-white px-6 py-2 rounded-lg text-xs font-bold w-full sm:w-auto shadow-sm transition-all">
+                            Academic Release Form
+                        </button>
                     </div>
                 </div>
 
                 <!-- Coach Details Card -->
-                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm flex flex-col">
-                    <h2 class="text-xl font-bold mb-6 text-gray-800">Coach Details</h2>
+                <div class="bg-white rounded-2xl p-5 lg:p-8 shadow-sm border border-gray-100 flex flex-col">
+                    <h2 class="text-lg lg:text-xl font-bold mb-6 text-gray-800 flex items-center">
+                        <span class="w-1.5 h-6 bg-blue-900 rounded-full mr-3"></span>
+                        Coach Details
+                    </h2>
                     
-                    <div class="flex flex-col md:flex-row flex-1">
-                        <!-- Text Info -->
-                        <div class="flex-1 space-y-3 pr-4">
-                            <div class="flex">
-                                <span class="w-24 text-gray-400 text-sm">Name</span>
-                                <span class="font-semibold text-blue-800 text-sm">Eva John</span>
+                    <div class="flex flex-col md:flex-row gap-6 lg:gap-8 flex-1">
+                        <!-- Left: Info -->
+                        <div class="flex-1">
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Name</span>
+                                <span class="font-semibold text-blue-900 text-sm">Eva John</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-24 text-gray-400 text-sm">Title</span>
-                                <span class="font-semibold text-blue-800 text-sm">Coach</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Title</span>
+                                <span class="font-semibold text-blue-900 text-sm">Coach</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-24 text-gray-400 text-sm">Email</span>
-                                <span class="font-semibold text-blue-800 text-sm">fizzah+098@plumlogix.com</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Email</span>
+                                <span class="font-semibold text-blue-900 text-sm break-all">fizzah+098@plumlogix.com</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-24 text-gray-400 text-sm">Mobile</span>
-                                <span class="font-semibold text-blue-800 text-sm">222-222-222</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Mobile</span>
+                                <span class="font-semibold text-blue-900 text-sm">222-222-222</span>
                             </div>
-                            <div class="flex">
-                                <span class="w-24 text-gray-400 text-sm shrink-0">Address</span>
-                                <span class="font-semibold text-blue-800 text-sm leading-snug">20 Cooper Square<br>New York NY<br>United States 10003</span>
+                            <div class="detail-row">
+                                <span class="text-gray-400 text-sm font-medium">Address</span>
+                                <span class="font-semibold text-blue-900 text-sm leading-relaxed">
+                                    20 Cooper Square<br>
+                                    New York NY<br>
+                                    United States 10003
+                                </span>
                             </div>
                         </div>
                         
-                        <!-- Profile Section -->
-                        <div class="mt-6 md:mt-0 md:w-48 flex flex-col items-center">
-                            <div class="w-40 h-48 bg-gray-100 rounded-2xl overflow-hidden mb-4 shadow-inner">
-                                <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=1480&auto=format&fit=crop" alt="Coach" class="w-full h-full object-cover">
+                        <!-- Right: Photo -->
+                        <div class="w-full md:w-44 flex flex-col items-center">
+                            <!-- Coach Profile Picture -->
+                            <div class="w-36 lg:w-40 profile-box bg-slate-100 rounded-xl overflow-hidden shadow-sm mb-4">
+                                <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=400&auto=format&fit=crop" alt="Coach" class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mt-auto pt-4">
-                        <button class="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-3 rounded-lg transition-colors">
+                    <div class="mt-auto pt-6">
+                        <button class="w-full bg-[#2e7d32] hover:bg-[#25632a] text-white text-sm font-bold py-3 rounded-lg transition-all shadow-md">
                             Make an Appointment
                         </button>
                     </div>
@@ -257,35 +277,42 @@
 
             </div>
 
-            <!-- Useful Links Section -->
-            <section class="mb-12">
-                <h3 class="text-xl font-bold mb-6 text-gray-800">Useful Links</h3>
-                <div class="space-y-4">
-                    <p class="text-sm">
-                        <a href="#" class="text-blue-900 font-bold hover:underline">Federal Student Aid:</a>
-                        <span class="text-gray-600 ml-2">Apply for federal financial aid - grants, loans, work-study, and scholarships.</span>
-                    </p>
-                    <p class="text-sm">
-                        <a href="#" class="text-blue-900 font-bold hover:underline">StudentAid.Gov:</a>
-                        <span class="text-gray-600 ml-2">Offers many great resources to learn more about financial aid and manage loans.</span>
-                    </p>
+            <!-- Useful Links -->
+            <section class="pb-12 px-2">
+                <h3 class="text-lg font-bold mb-6 text-gray-800">Useful Links</h3>
+                <div class="space-y-5">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                            <i class="fas fa-link text-blue-900"></i>
+                        </div>
+                        <p class="text-sm">
+                            <a href="#" class="text-blue-900 font-bold hover:underline">Federal Student Aid:</a>
+                            <span class="text-gray-500 ml-1">Apply for federal financial aid - grants, loans, work-study, and scholarships.</span>
+                        </p>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                            <i class="fas fa-external-link-alt text-blue-900"></i>
+                        </div>
+                        <p class="text-sm">
+                            <a href="#" class="text-blue-900 font-bold hover:underline">StudentAid.Gov:</a>
+                            <span class="text-gray-500 ml-1">Offers many great resources to learn more about financial aid and manage loans.</span>
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>
-
     </main>
 
     <script>
-        // Automatic date updating
-        function updateDate() {
-            const dateEl = document.getElementById('currentDate');
+        function setDate() {
+            const el = document.getElementById('currentDate');
+            if (!el) return;
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            dateEl.textContent = now.toLocaleDateString('en-US', options);
+            el.textContent = now.toLocaleDateString('en-US', options);
         }
-        
-        // Initialize
-        window.onload = updateDate;
+        window.onload = setDate;
     </script>
 </body>
 </html>
